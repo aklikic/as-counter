@@ -75,4 +75,3 @@ for more information on how to make your docker image available to Akka Serverle
 Finally you can or use the [Akka Serverless Console](https://console.akkaserverless.com)
 to create a project and then deploy your service into the project
 through the `akkasls` CLI or via the web interface.
-# as-counter
