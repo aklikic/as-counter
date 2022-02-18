@@ -1,0 +1,120 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.2
+info:
+    title: CounterService API
+    version: 0.0.1
+paths:
+    /counter/{counterId}:
+        get:
+            tags:
+                - CounterService
+            operationId: CounterService_GetCurrentCounter
+            parameters:
+                - name: counterId
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CurrentCounter'
+    /counter/{counterId}/decrease:
+        put:
+            tags:
+                - CounterService
+            operationId: CounterService_Decrease
+            parameters:
+                - name: counterId
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/DecreaseValue'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /counter/{counterId}/increase:
+        put:
+            tags:
+                - CounterService
+            operationId: CounterService_Increase
+            parameters:
+                - name: counterId
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/IncreaseValue'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+    /counter/{counterId}/reset:
+        put:
+            tags:
+                - CounterService
+            operationId: CounterService_Reset
+            parameters:
+                - name: counterId
+                  in: path
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ResetValue'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+components:
+    schemas:
+        CurrentCounter:
+            type: object
+            properties:
+                value:
+                    type: integer
+                    format: int32
+        DecreaseValue:
+            type: object
+            properties:
+                counterId:
+                    type: string
+                value:
+                    type: integer
+                    format: int32
+        IncreaseValue:
+            type: object
+            properties:
+                counterId:
+                    type: string
+                value:
+                    type: integer
+                    format: int32
+        ResetValue:
+            type: object
+            properties:
+                counterId:
+                    type: string
+tags:
+    - name: CounterService
